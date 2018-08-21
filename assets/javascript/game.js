@@ -1,7 +1,8 @@
+
 // can edit the basics when i undstand why this wont run
 // $(document).ready(function()
 // game winning number
-var random = Math.floor(Math.radnom() * 101 + 19);
+var random = Math.floor(Math.random() * 101 + 19);
 // to give random values to the images
 var randomValue = Math.floor(Math.random() * 11 + 1);
 // make sure we dont get 2 of the same values not sure where to implement this
@@ -16,7 +17,7 @@ var losses = 0;
 function gamestart() {
 $(".Number").text('you must mine ' + random + ' crystals');
 // sets our mined crystals back to 0
-var mined = 0;
+var minedstart = 0;
 // create our 4 images with 4 random values
 for (var i = 0; i < 4; i++) {
 
@@ -28,16 +29,16 @@ for (var i = 0; i < 4; i++) {
 
     image.attr('crystalValue', randomValue);
 
-    $('.images').append(crystals);
+    $('.images').append('.crystals');
 }}
 // core of the game, on clicks add our random values to the total until you get the goal or bust
 // please god have "this" work. this should refer to .crystals
 $('.crystals').on('click', function(){
 var amount =  $(this).attr('crystalValue')
-mined += amount;
+var mined = minedstart+amount;
 
 $('.Number').append('<p>crystals mined '+ mined+' </p>');
-if (amount === random){
+if (mined === random){
 wins ++;
 return gamestart();
 }
